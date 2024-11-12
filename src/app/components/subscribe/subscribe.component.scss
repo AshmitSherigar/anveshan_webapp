@@ -1,0 +1,90 @@
+/* Newsletter Section */
+.container h2 {
+    font-size: 36px;
+    text-align: center;
+    letter-spacing: 2px;
+    color: #e5e5e5;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    font-weight: 300;
+}
+
+.container p {
+    font-size: 18px;
+    color: #a0a0a0;
+    text-align: center;
+    line-height: 1.7;
+    margin-bottom: 20px;
+}
+
+/* Container General Styling */
+.container {
+    width: 80%;
+    max-width: 1200px;
+    height:auto;
+    margin:0 auto;
+    margin-top: 10vh;
+    margin-bottom: 10vh;
+    padding: 50px 0;
+    background-color: #1a1a1a;
+    /* Dark background for a modern aesthetic */
+    border-radius: 12px;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.6);
+}
+
+.container form {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.container input[type="email"] {
+    padding: 12px;
+    margin-bottom: 15px;
+    width: 100%;
+    max-width: 350px;
+    border: 1px solid #333333;
+    background-color: #2b2b2b;
+    color: #e5e5e5;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.container input[type="email"]::placeholder {
+    color: #777777;
+}
+
+.container button {
+    padding: 12px 24px;
+    border: none;
+    background-color: #3e3e3e;
+    /* Slightly lighter for contrast */
+    color: #e5e5e5;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.container button:hover {
+    background-color: #575757;
+}
+
+.container input[type="email"]:focus {
+    border-color: #555555;
+    /* Maintain a dark border color */
+    outline: none;
+    /* Remove default outline */
+}
+
+/* Optional Media Query for Mobile Responsiveness */
+@media (max-width: 600px) {
+    .container h2 {
+        font-size: 28px;
+    }
+
+    .container p {
+        font-size: 16px;
+    }
+}
