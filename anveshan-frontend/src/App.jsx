@@ -1,17 +1,19 @@
-import React from 'react'
-import Navigation from './components/Navigation'
-import Preloader from './components/Preloader'
-const App = () => {
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Home from '../src/components/Home';
+import AboutUs from '../src/components/AboutUs';
+import Preloader from '../src/components/Preloader';
+
+function App() {
   return (
-    <>
-      <div className='w-full h-screen'>
 
-        <Preloader />
-        {/* <Navigation /> */}
-
-      </div>
-    </>
-  )
+    <Router>
+      <Routes>
+        {/* <Preloader /> */}
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<AboutUs />} />
+      </Routes>
+    </Router>
+  );
 }
 
-export default App
+export default App;

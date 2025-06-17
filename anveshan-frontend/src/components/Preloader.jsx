@@ -1,6 +1,6 @@
 import React, { useRef, useLayoutEffect, useState } from 'react';
 import gsap from 'gsap';
-
+import Navigation from './Navigation';
 const Preloader = () => {
   const counter1Ref = useRef(null);
   const counter2Ref = useRef(null);
@@ -8,7 +8,7 @@ const Preloader = () => {
   const loaderRef = useRef(null);
   const [rendered, setRendered] = useState(false);
 
-  const nums = Array.from({ length: 11 }, (_, i) => (i % 10).toString()); // [0..9, 0]
+  const nums = Array.from({ length: 11 }, (_, i) => (i % 10).toString()); 
 
   useLayoutEffect(() => {
     if (rendered) {
@@ -99,7 +99,8 @@ const Preloader = () => {
 
   return (
     <>
-      <div className="website z-10 relative">website content</div>
+      {/* <div className="website z-10 relative">website content</div> */}
+      {/* <Navigation /> */}
 
       <div className="loading-screen fixed top-0 left-0 w-full h-full bg-black text-white pointer-events-none z-50">
         <div
