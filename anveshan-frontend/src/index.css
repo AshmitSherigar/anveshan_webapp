@@ -1,9 +1,109 @@
 @import "tailwindcss";
 
-
-
 * {
-
   box-sizing: border-box;
 }
 
+@keyframes float {
+  0% {
+    transform: translateY(0px) translateX(0px);
+  }
+
+  50% {
+    transform: translateY(-8px) translateX(-1px);
+  }
+
+  100% {
+    transform: translateY(0px) translateX(0px);
+  }
+}
+
+
+.character {
+  animation: float 4s ease-in-out infinite;
+  display: inline-block;
+  will-change: transform;
+
+}
+
+.char-0 {
+  animation-delay: 0s;
+}
+
+.char-1 {
+  animation-delay: 0.2s;
+}
+.char-2 {
+  animation-delay: 0.5s;
+}
+.char-3 {
+  animation-delay: 0.9s;
+}
+
+.char-4 {
+  animation-delay: 0.8s;
+}
+.char-5 {
+  animation-delay: 1s;
+}
+
+.char-6 {
+  animation-delay: 1.1s;
+}
+.char-7 {
+  animation-delay: 1.3s;
+}
+.char-8 {
+  animation-delay: 1.6s;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/* TeamDisplay */
+.img {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  padding: 1px;
+  cursor: pointer;
+  will-change: width, height;
+}
+
+.profile-name {
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+}
+
+.default h1{
+  color: black;
+}
+
+.profile-images {
+  cursor: pointer;
+}
+
+.profile-names .name {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  left: 0;
+}
+
+.letter {
+  position: relative;
+  display: inline-block;
+  transform: translateY(100%);
+  will-change: transform;
+}
