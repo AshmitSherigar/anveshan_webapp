@@ -2,6 +2,8 @@ import React, { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import TeamDisplay from './TeamDisplay';
+import CircularText from './CircularText';
+import Footer from './Footer';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -140,7 +142,7 @@ const Home = () => {
 
     return () => {
       clearInterval(interval);
-      trigger.kill(); 
+      trigger.kill();
       ctx.revert()
     };
   }, []);
@@ -159,6 +161,8 @@ const Home = () => {
         >
           {currentDate}.
         </div>
+
+
 
         <div className="absolute left-1/2 top-[50%] -translate-x-1/2 -translate-y-1/2 text-8xl  uppercase font-medium tracking-widest hero-text">
           <h1 ref={h1Ref} className="px-7 py-3 flex items-center justify-center select-none">
@@ -195,6 +199,15 @@ const Home = () => {
         >
           Scroll Down ↓
         </div>
+
+
+
+        <CircularText
+          text="Anveshan * AIML * NIE MYSORE * "
+          onHover="goBonkers"
+          spinDuration={10}
+          className=""
+        />
       </section>
 
       <section
@@ -234,6 +247,7 @@ const Home = () => {
       <section className='h-[100vh] w-full bg-green-500'></section>
       <section className='h-[100vh] w-full bg-blue-500'></section>
       <TeamDisplay />
+      <Footer/>
     </>
   );
 };
