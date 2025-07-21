@@ -114,7 +114,7 @@ const TeamDisplay = () => {
             duration: 0.5
           });
 
-          // If NO images are hovered, bring back "Members"
+          
           setTimeout(() => {
             if (!hoverStates.includes(true)) {
               gsap.killTweensOf(defaultLetters);
@@ -128,7 +128,7 @@ const TeamDisplay = () => {
                 }
               });
             }
-          }, 100); // short delay to prevent flicker
+          }, 100); 
         });
       });
     }
@@ -136,7 +136,7 @@ const TeamDisplay = () => {
 
 
   return (
-    <section className='relative w-[100vw] h-[100svh] flex flex-col justify-center items-center gap-[2.5rem] overflow-x-hidden'>
+    <section className='border-t-2 relative w-[100vw] h-[100svh] flex flex-col justify-center items-center gap-[2.5rem] overflow-x-hidden'>
       {/* Profile Images */}
       <div className="profile-images w-max flex justify-center items-center gap-4 flex-wrap">
         {Array.from({ length: 9 }).map((_, i) => (

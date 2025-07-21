@@ -1,18 +1,33 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { useNavigate } from "react-router-dom";
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import TeamDisplay from './TeamDisplay';
 import CircularText from './CircularText';
 import Footer from './Footer';
+import ProjectDisplay from './ProjectDisplay';
+import CurvedLoop from './CurvedLoop';
+import VariableProximity from './VariableProximity';
+import Resources from './Resources';
+
+
 
 gsap.registerPlugin(ScrollTrigger);
 
 
 {/* <svg width="1013" height="1761" viewBox="0 0 1013 1761" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M7 15C296.087 145.682 29.794 500.036 97.5 666.5C165.206 832.964 475.531 728.863 561.5 635C647.469 541.137 538.42 260.453 374.5 345.5C210.58 430.547 337.974 689.002 374.5 828.5C411.026 967.998 76.3372 893.307 202.1 1233.66C327.863 1574.02 1149.21 1175.58 779.5 1006C409.79 836.424 433.598 1921.92 1007 1719.06" stroke="#224B6B" stroke-width="32"/>
-</svg> */}
+  <path d="M7 15C296.087 145.682 29.794 500.036 97.5 666.5C165.206 832.964 475.531 728.863 561.5 635C647.469 541.137 538.42 260.453 374.5 345.5C210.58 430.547 337.974 689.002 374.5 828.5C411.026 967.998 76.3372 893.307 202.1 1233.66C327.863 1574.02 1149.21 1175.58 779.5 1006C409.79 836.424 433.598 1921.92 1007 1719.06" stroke="#224B6B" stroke-width="32"/>
+  </svg> */}
 
 const Home = () => {
+
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate("/about");
+  };
+
+  const containerRef = useRef(null);
   const heroRef = useRef();
   const aboutRef = useRef();
   const h1Ref = useRef();
@@ -44,23 +59,23 @@ const Home = () => {
 
 
   useEffect(() => {
-    const path = pathRef.current;
-    const length = path.getTotalLength();
+    // const path = pathRef.current;
+    // const length = path.getTotalLength()  ;
 
-    // Set initial stroke properties
-    path.style.strokeDasharray = length;
-    path.style.strokeDashoffset = length;
+    // // Set initial stroke properties
+    // path.style.strokeDasharray = length;
+    // path.style.strokeDashoffset = length;
 
-    gsap.to(path, {
-      strokeDashoffset: 0,
-      ease: 'power3.out',
-      scrollTrigger: {
-        trigger: aboutRef.current,
-        start: 'top-=200vh center',
-        end: 'bottom center',
-        scrub: 1,
-      },
-    });
+    // gsap.to(path, {
+    //   strokeDashoffset: 0,
+    //   ease: 'power3.out',
+    //   scrollTrigger: {
+    //     trigger: aboutRef.current,
+    //     start: 'top-=200vh center',
+    //     end: 'bottom center',
+    //     scrub: 1,
+    //   },
+    // });
 
 
     let interval;
@@ -105,15 +120,15 @@ const Home = () => {
         ease: 'ease',
       });
 
-      gsap.from(bottomTextRef.current.children, {
-        y: 40,
-        stagger: 0.3,
-        opacity: 0,
-        scale: 0,
-        delay: 0.1,
-        duration: 0.6,
-        ease: 'ease',
-      });
+      // gsap.from(bottomTextRef.current.children, {
+      //   y: 40,
+      //   stagger: 0.3,
+      //   opacity: 0,
+      //   scale: 0,
+      //   delay: 0.1,
+      //   duration: 0.6,
+      //   ease: 'ease',
+      // });
 
       gsap.to(dateRef.current, {
         scrollTrigger: {
@@ -153,7 +168,7 @@ const Home = () => {
 
       <section
         ref={heroRef}
-        className="relative min-h-screen w-full font-sans text-black bg-white overflow-hidden"
+        className="relative min-h-screen w-full font-sans text-black bg-white overflow-hidden border-b-2"
       >
         <div
           ref={dateRef}
@@ -184,12 +199,12 @@ const Home = () => {
 
         <div
           ref={bottomTextRef}
-          className="absolute bottom-[25%] right-10 text-gray-500 tracking-wide text-lg z-2 select-all selection:bg-black selection:text-white"
+          className="flex items-center justify-center flex-col absolute bottom-[20%] right-[2%] text-gray-500 tracking-wide text-lg z-2 select-all selection:none"
         >
+          <p className='mb-2'>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolores, veniam?</p>
 
-          {"Join the AI/ML revolution.".split(" ").map((char, index) => (
-            <span key={index}>{char + " "}</span>
-          ))}
+
+
         </div>
 
         <div
@@ -216,18 +231,36 @@ const Home = () => {
         className="min-h-screen w-full text-black  px-12 py-24 flex flex-col justify-center"
       >
         <div ref={aboutTextRef} className="max-w-5xl mx-auto space-y-10 text-lg leading-loose z-2">
-          <h2 className="text-4xl text-black font-bold border-b pb-4 border-gray-600 uppercase tracking-wide text-center">
-            {typedHeading}
-            <span className="animate-pulse text-center">|</span>
+          <h2 className="text-center text-4xl font-bold border-b pb-4 border-gray-600 uppercase tracking-wide group inline-block">
+            {[...typedHeading].map((char, idx) => (
+              <span
+                key={idx}
+                className="mx-auto cursor-pointer text-black stroke-text transition-colors duration-300 ease-in-out hover:text-transparent inline-block"
+              >
+                {char === ' ' ? '\u00A0' : char}
+              </span>
+            ))}
+            <span className="blink-cursor  text-black">|</span>
           </h2>
 
 
-          <p>
-            Welcome to <strong>ANVESHAN</strong>, the AIML and Research Club of The National Institute of Engineering.
-            Our mission is to empower students and enthusiasts by providing a platform where they can explore the latest advancements
-            in artificial intelligence and machine learning. We believe in the power of technology to transform lives and solve
-            real-world challenges, and our club is dedicated to fostering innovation and collaboration in this exciting field.
-          </p>
+
+          <div
+            ref={containerRef}
+            style={{ position: 'relative' }}
+          >
+            <VariableProximity
+              label={`
+                Welcome to ANVESHAN, the AIML and Research Club of The National Institute of Engineering. Our mission is to empower students and enthusiasts by providing a platform where they can explore the latest advancements in artificial intelligence and machine learning. We believe in the power of technology to transform lives and solve real-world challenges, and our club is dedicated to fostering innovation and collaboration in this exciting field.`}
+              className='hover:cursor-pointer'
+              fromFontVariationSettings="'wght' 200, 'opsz' 10"
+              toFontVariationSettings="'wght' 1000, 'opsz' 40"
+              containerRef={containerRef}
+              radius={80}
+              falloff='gaussian'
+            />
+          </div>
+
 
           <p>
             At <strong>ANVESHAN</strong>, we engage in various projects that leverage AI and ML technologies, focusing on practical
@@ -236,18 +269,32 @@ const Home = () => {
             inspire the next generation of tech leaders.
           </p>
         </div>
+        <button onClick={handleClick} className="mx-auto px-10 py-3 rounded-2xl shadow-lg border">
+          About us
+        </button>
 
-        <svg ref={svgRef} className='w-full z-1 absolute top-[50%] left-0' width="1602" height="999" viewBox="0 0 1602 999" fill="none" xmlns="http://www.w3.org/2000/svg">
+        {/* <svg ref={svgRef} className='w-full z-1 absolute top-[50%] left-0' width="1602" height="999" viewBox="0 0 1602 999" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path ref={pathRef} d="M3.5 16C666.157 133.906 -30.8678 435.769 98.6252 435.769C228.118 435.769 221.322 784.104 420.161 609.937C619 435.769 1001 36 599.199 80.0939C197.397 124.188 1180.5 258 1121.78 369.228C1063.07 480.457 673.5 1100 474.5 917C275.5 734 1542.41 736.276 1586 995.5" stroke="#224B6B" strokeWidth="25" strokeLinecap='round' />
-        </svg>
+        </svg> */}
 
       </section>
 
       <section className='h-[100vh] w-full bg-amber-500'></section>
-      <section className='h-[100vh] w-full bg-green-500'></section>
-      <section className='h-[100vh] w-full bg-blue-500'></section>
+      <CurvedLoop
+        marqueeText="Projects ✦ Researches ✦"
+        speed={2}
+        curveAmount={400}
+        direction="right"
+        interactive={true}
+        className="custom-text-style"
+      />
+      <ProjectDisplay />
+
+
+
+      <Resources />
       <TeamDisplay />
-      <Footer/>
+      <Footer />
     </>
   );
 };

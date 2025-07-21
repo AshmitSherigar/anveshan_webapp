@@ -8,7 +8,7 @@ const Footer = () => {
 
 
   return (
-    <footer className="bg-white text-black pt-16">
+    <footer className="bg-white text-black pt-16 border-t-2">
       {/* Newsletter Box */}
       {/* <div className="bg-gray-100 rounded-2xl max-w-4xl mx-auto px-10 py-12 text-center shadow-xl hover:shadow-2xl transition-shadow duration-500">
         <h2 className="text-2xl md:text-3xl font-semibold uppercase mb-4">
