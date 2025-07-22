@@ -11,7 +11,6 @@ import VariableProximity from './VariableProximity';
 import Resources from './Resources';
 
 
-
 gsap.registerPlugin(ScrollTrigger);
 
 
@@ -278,6 +277,7 @@ const Home = () => {
         </svg> */}
 
       </section>
+
 
       <section className='h-[100vh] w-full bg-amber-500'></section>
       <CurvedLoop

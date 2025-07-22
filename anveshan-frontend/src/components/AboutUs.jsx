@@ -1,102 +1,228 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import DotGrid from './DotGrid';
+import Footer from './Footer';
+import Masonry from './Masonry';
+import imageReq from '../assets/images/110-600x860-grayscale.jpg';
 
-gsap.registerPlugin(ScrollTrigger);
 
 const About = () => {
   const sectionRef = useRef(null);
-  const linesRef = useRef([]);
-  const titleRef = useRef();
+  const animatedHeadingRef = useRef();
+
+  const [showMasonry, setShowMasonry] = useState(false);
+
+  const items = [
+    {
+      id: "1",
+      img: imageReq,
+      url: "https://example.com/one",
+      height: 400,
+    },
+    {
+      id: "2",
+      img: imageReq,
+      url: "https://example.com/two",
+      height: 500,
+    },
+    {
+      id: "3",
+      img: imageReq,
+      url: "https://example.com/three",
+      height: 650,
+    },
+    {
+      id: "4",
+      img: imageReq,
+      url: "https://example.com/four",
+      height: 300,
+    },
+    {
+      id: "5",
+      img: imageReq,
+      url: "https://example.com/five",
+      height: 270,
+    },
+    {
+      id: "6",
+      img: imageReq,
+      url: "https://example.com/six",
+      height: 650,
+    },
+    {
+      id: "7",
+      img: imageReq,
+      url: "https://example.com/seven",
+      height: 300,
+    },
+    {
+      id: "8",
+      img: imageReq,
+      url: "https://example.com/eight",
+      height: 600,
+    },
+    {
+      id: "9",
+      img: imageReq,
+      url: "https://example.com/nine",
+      height: 200,
+    },
+    {
+      id: "10",
+      img: imageReq,
+      url: "https://example.com/ten",
+      height: 700,
+    },
+    {
+      id: "11",
+      img: imageReq,
+      url: "https://example.com/eleven",
+      height: 400,
+    },
+    {
+      id: "12",
+      img: imageReq,
+      url: "https://example.com/twelve",
+      height: 500,
+    },
+    {
+      id: "13",
+      img: imageReq,
+      url: "https://example.com/thirteen",
+      height: 400,
+    },
+    {
+      id: "14",
+      img: imageReq,
+      url: "https://example.com/fourteen",
+      height: 300,
+    },
+    {
+      id: "15",
+      img: imageReq,
+      url: "https://example.com/fifteen",
+      height: 300
+    },
+    {
+      id: "16",
+      img: imageReq,
+      url: "https://example.com/sixteen",
+      height: 250,
+    },
+  ];
+
+
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Title parallax float
-      gsap.fromTo(
-        titleRef.current,
-        { y: 60, opacity: 0 },
+      const tl = gsap.timeline();
+
+      tl.fromTo(
+        animatedHeadingRef.current,
         {
-          scrollTrigger: {
-            trigger: titleRef.current,
-            start: 'top 80%',
-            toggleActions: 'play none none reset',
-          },
+          x: window.innerWidth / 2 + 300,
+          y: window.innerHeight / 2,
+          opacity: 0,
+        },
+        {
+          x: 0,
           y: 0,
           opacity: 1,
           duration: 1,
           ease: 'power3.out',
         }
-      );
-
-      // Paragraphs fade in one by one
-      linesRef.current.forEach((el, index) => {
-        gsap.fromTo(
-          el,
-          { y: 40, opacity: 0 },
-          {
-            scrollTrigger: {
-              trigger: el,
-              start: 'top 90%',
-              toggleActions: 'play none none reset',
-            },
-            y: 0,
-            opacity: 1,
-            duration: 1,
-            ease: 'power2.out',
-            delay: index * 0.2,
-          }
-        );
-      });
+      )
+        .to(animatedHeadingRef.current, {
+          y: -400,
+          duration: 1,
+          ease: 'power2.inOut',
+          onComplete: () => {
+            setShowMasonry(true);
+          },
+        });
     }, sectionRef);
 
     return () => ctx.revert();
   }, []);
 
-  return (
-    <section
-      ref={sectionRef}
-      className="min-h-screen w-full bg-black text-white py-24 px-8 md:px-24 font-sans"
-      style={{
-        backgroundImage:
-          'linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.85)), url(/grid-pattern.svg)',
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-      }}
-    >
-      <div className="max-w-5xl mx-auto text-center">
-        <h2
-          ref={titleRef}
-          className="text-4xl md:text-5xl font-semibold uppercase tracking-wide mb-6"
-        >
-          Exploring the Frontiers of AI and ML
-        </h2>
-        <div className="w-24 h-[2px] mx-auto bg-gray-400 mb-10 glow-line"></div>
+  useEffect(() => {
+    const alreadyScrolled = localStorage.getItem('masonryScroll');
 
-        <p
-          ref={(el) => (linesRef.current[0] = el)}
-          className="text-gray-300 text-lg leading-relaxed mb-6"
+    if (showMasonry && !alreadyScrolled) {
+      const timeout = setTimeout(() => {
+        sectionRef.current?.scrollIntoView({ behavior: 'smooth' });
+        localStorage.setItem('masonryScroll', 'true');
+      }, 2000);
+
+      return () => clearTimeout(timeout);
+    }
+  }, [showMasonry]);
+
+
+
+  return (
+    <>
+      <section
+        ref={sectionRef}
+        className="relative min-h-screen bg-black text-white px-8 md:px-24 py-24 font-sans border-b"
+      >
+        <div className="absolute inset-0 z-0">
+          <DotGrid
+            dotSize={3}
+            gap={20}
+            baseColor="#5227FF"
+            activeColor="#5227FF"
+            proximity={100}
+            shockRadius={200}
+            shockStrength={5}
+            resistance={100}
+            returnDuration={1}
+          />
+        </div>
+
+        <div className="relative z-10 flex flex-col justify-center items-center text-center h-full space-y-12">
+          <h1 className="text-5xl md:text-8xl font-bold">
+            Welcome to Anveshan
+          </h1>
+
+          <p className="text-lg md:text-xl w-full md:w-3/4 text-gray-300 leading-relaxed">
+            Dive into the world of AI and Machine Learning with our dynamic community-driven club.
+            Anveshan empowers students to explore, experiment, and excel with hands-on projects, workshops, and real-world challenges.
+          </p>
+
+          <button className="px-8 py-3 bg-white text-black rounded-xl shadow-lg border hover:scale-105 transition">
+            Join Us
+          </button>
+
+          <p className="text-sm text-gray-400 max-w-xl mt-1">
+            “The future belongs to those who learn more skills and combine them in creative ways.” – Robert Greene
+          </p>
+        </div>
+      </section>
+
+      <section className="relative bg-black py-32 px-4 md:px-24 min-h-[100vh] overflow-hidden">
+        <h2
+          ref={animatedHeadingRef}
+          className="text-3xl md:text-5xl font-semibold text-white absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-50 text-center"
         >
-          Welcome to <span className="text-white font-medium">ANVESHAN</span>, the AI, ML, and
-          Research Club of The National Institute of Engineering. Our mission is to empower
-          students and enthusiasts by providing a platform to explore advancements in artificial
-          intelligence and machine learning.
-        </p>
-        <p
-          ref={(el) => (linesRef.current[1] = el)}
-          className="text-gray-300 text-lg leading-relaxed mb-6"
-        >
-          We believe in the power of technology to transform lives and solve real-world challenges.
-          Our club fosters innovation, curiosity, and collaboration in this fast-evolving field.
-        </p>
-        <p
-          ref={(el) => (linesRef.current[2] = el)}
-          className="text-gray-300 text-lg leading-relaxed"
-        >
-          Through projects, research, workshops, and competitions, ANVESHAN empowers students to
-          lead the AI revolution and build meaningful solutions that matter.
-        </p>
-      </div>
-    </section>
+          What We Do – In Visuals
+        </h2>
+
+        <div className="h-[100vh]">
+          {showMasonry && (
+            <Masonry
+              items={items}
+              animateFrom="bottom"
+              blurToFocus
+              scaleOnHover
+              colorShiftOnHover
+            />
+          )}
+        </div>
+      </section>
+
+      <Footer />
+    </>
   );
 };
 
