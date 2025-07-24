@@ -3,12 +3,10 @@ import React from 'react';
 import { FaLinkedin, FaInstagram, FaXTwitter } from 'react-icons/fa6';
 import TrueFocus from './TrueFocus';
 
-const Footer = () => {
+const Footer = ({darkMode}) => {
   const year = new Date().getFullYear();
-
-
   return (
-    <footer className="bg-white text-black pt-16 border-t-2 ">
+    <footer className={`${darkMode ? `bg-black text-white` : `bg-white text-black` } pt-16 border-t-2 `}>
       {/* Newsletter Box */}
       {/* <div className="bg-gray-100 rounded-2xl max-w-4xl mx-auto px-10 py-12 text-center shadow-xl hover:shadow-2xl transition-shadow duration-500">
         <h2 className="text-2xl md:text-3xl font-semibold uppercase mb-4">
@@ -89,7 +87,7 @@ const Footer = () => {
           width={true}
           weight={true}
           italic={false}
-          textColor="#000"
+          textColor={`${darkMode ? `#fff` : `#000`}`}
           strokeColor="lightgrey"
           minFontSize={10}
         />

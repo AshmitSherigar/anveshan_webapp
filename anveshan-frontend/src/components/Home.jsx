@@ -9,14 +9,21 @@ import ProjectDisplay from './ProjectDisplay';
 import CurvedLoop from './CurvedLoop';
 import VariableProximity from './VariableProximity';
 import Resources from './Resources';
+import Navigation from './Navigation';
+import logo from "../assets/images/logo.jpeg"
+import logo2 from "../assets/images/logo-removebg-preview.png"
 
 
 gsap.registerPlugin(ScrollTrigger);
 
 
-{/* <svg width="1013" height="1761" viewBox="0 0 1013 1761" fill="none" xmlns="http://www.w3.org/2000/svg">
+{/* 
+
+  <svg width="1013" height="1761" viewBox="0 0 1013 1761" fill="none" xmlns="http://www.w3.org/2000/svg">
   <path d="M7 15C296.087 145.682 29.794 500.036 97.5 666.5C165.206 832.964 475.531 728.863 561.5 635C647.469 541.137 538.42 260.453 374.5 345.5C210.58 430.547 337.974 689.002 374.5 828.5C411.026 967.998 76.3372 893.307 202.1 1233.66C327.863 1574.02 1149.21 1175.58 779.5 1006C409.79 836.424 433.598 1921.92 1007 1719.06" stroke="#224B6B" stroke-width="32"/>
-  </svg> */}
+  </svg>
+   
+*/}
 
 const Home = () => {
 
@@ -101,8 +108,7 @@ const Home = () => {
         {
           scale: 1,
           y: 0,
-          skewX: 5,
-          skewY: 5,
+
           opacity: 1,
           duration: 0.3,
           ease: 'back.out(3)',
@@ -165,10 +171,15 @@ const Home = () => {
   return (
     <>
 
+      <Navigation />
+
       <section
         ref={heroRef}
-        className="relative min-h-screen w-full font-sans text-black bg-white overflow-hidden border-b-2"
+        className="relative min-h-screen w-full font-sans text-black bg-white overflow-hidden border-b-2 selection:none"
       >
+        <div className='h-[65vh] w-[65vh] absolute top-20 right-40 hover:scale-[1.1] duration-500 linear select-none'>
+          <img src={logo2} alt="" />
+        </div>
         <div
           ref={dateRef}
           className="absolute top-20 right-10 text-sm tracking-widest text-gray-600 uppercase hero-text select-none"
@@ -178,8 +189,8 @@ const Home = () => {
 
 
 
-        <div className="absolute left-1/2 top-[50%] -translate-x-1/2 -translate-y-1/2 text-8xl  uppercase font-medium tracking-widest hero-text">
-          <h1 ref={h1Ref} className="px-7 py-3 flex items-center justify-center select-none">
+        <div className="absolute left-[35%] top-[45%] -translate-x-1/2 -translate-y-1/2 text-8xl  uppercase font-medium tracking-widest hero-text">
+          <h1 ref={h1Ref} className="px-3 py-3 flex items-center justify-center select-none">
             {"Anveshan".split("").map((char, index) => (
               <span className={`character char-${index}`} key={index}>{char}</span>
             ))}
@@ -188,7 +199,7 @@ const Home = () => {
 
         <div
           ref={topTextRef}
-          className="absolute top-[30%] left-10 text-gray-500 tracking-wide text-lg z-2 select-all selection:bg-black selection:text-white"
+          className="absolute top-[25%] left-10  text-gray-500 tracking-wide text-lg z-2"
         >
           {"Explore. Innovate. Lead.".split(" ").map((char, index) => (
             <span key={index}>{char + " "}</span>
@@ -198,9 +209,9 @@ const Home = () => {
 
         <div
           ref={bottomTextRef}
-          className="flex items-center justify-center flex-col absolute bottom-[20%] right-[2%] text-gray-500 tracking-wide text-lg z-2 select-all selection:none"
+          className="text-right w-[40%] flex items-center justify-center flex-col absolute bottom-[15%] right-[2%] text-gray-500 tracking-wide text-lg z-2 select-all selection:none"
         >
-          <p className='mb-2'>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolores, veniam?</p>
+          <p className='mb-2'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae perspiciatis, fugiat minima ullam excepturi consequatur provident maiores exercitationem </p>
 
 
 
@@ -219,7 +230,7 @@ const Home = () => {
         <CircularText
           text="Anveshan * AIML * NIE MYSORE * "
           onHover="goBonkers"
-          spinDuration={10}
+          spinDuration={15}
           className=""
         />
       </section>
@@ -230,16 +241,16 @@ const Home = () => {
         className="min-h-screen w-full text-black  px-12 py-24 flex flex-col justify-center"
       >
         <div ref={aboutTextRef} className="max-w-5xl mx-auto space-y-10 text-lg leading-loose z-2">
-          <h2 className="text-center text-4xl font-bold border-b pb-4 border-gray-600 uppercase tracking-wide group inline-block">
+          <h2 className="text-center w-[100%]  text-4xl font-bold border-b pb-2 border-gray-600 uppercase tracking-wide group inline-block ">
             {[...typedHeading].map((char, idx) => (
               <span
                 key={idx}
-                className="mx-auto cursor-pointer text-black stroke-text transition-colors duration-300 ease-in-out hover:text-transparent inline-block"
+                className="cursor-pointer text-black stroke-text transition-colors duration-300 ease-in-out hover:text-gray-500 "
               >
                 {char === ' ' ? '\u00A0' : char}
               </span>
             ))}
-            <span className="blink-cursor  text-black">|</span>
+            <span className="blink-cursor text-black">|</span>
           </h2>
 
 
@@ -261,7 +272,7 @@ const Home = () => {
           </div>
 
 
-          <p>
+          <p className='text-center mb-5'>
             At <strong>ANVESHAN</strong>, we engage in various projects that leverage AI and ML technologies, focusing on practical
             applications that can make a difference. We encourage our members to dive deep into research, share their findings,
             and contribute to the growing body of knowledge. Through workshops, discussions, and collaborative projects, we aim to
@@ -283,7 +294,7 @@ const Home = () => {
       <CurvedLoop
         marqueeText="Projects ✦ Researches ✦"
         speed={2}
-        curveAmount={400}
+        curveAmount={300}
         direction="right"
         interactive={true}
         className="custom-text-style"

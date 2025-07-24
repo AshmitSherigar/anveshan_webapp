@@ -1,6 +1,8 @@
 import React, { useRef, useLayoutEffect, useState } from 'react';
 import gsap from 'gsap';
 import Navigation from './Navigation';
+
+  
 const Preloader = () => {
   const counter1Ref = useRef(null);
   const counter2Ref = useRef(null);

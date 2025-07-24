@@ -897,7 +897,7 @@ export default function InfiniteMenu({ items = [] }) {
           absolute
           font-black
           [font-size:3rem]
-          max-w-[15ch]
+          max-w-[10ch]
           left-[1.5em]
           top-1/2
           transform
@@ -940,6 +940,9 @@ export default function InfiniteMenu({ items = [] }) {
                         className={`
           absolute
           left-1/2
+          top-[80%]
+          -translate-x-1/2
+          -translate-y-1/2
           z-10
           w-[60px]
           h-[60px]

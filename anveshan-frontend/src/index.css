@@ -6,7 +6,7 @@
   box-sizing: border-box;
 }
 
-@keyframes float {
+/* @keyframes float {
   0% {
     transform: translateY(0px) translateX(0px);
   }
@@ -18,10 +18,10 @@
   100% {
     transform: translateY(0px) translateX(0px);
   }
-}
+} */
 
 
-.character {
+/* .character {
   animation: float 4s ease-in-out infinite;
   display: inline-block;
   will-change: transform;
@@ -62,7 +62,7 @@
 
 .char-8 {
   animation-delay: 1.6s;
-}
+} */
 
 
 
@@ -124,7 +124,8 @@
 }
 
 .blink-cursor {
-  color: black; /* Change based on your background */
+  color: black;
+  /* Change based on your background */
   animation: blink 1s step-start infinite;
 }
 

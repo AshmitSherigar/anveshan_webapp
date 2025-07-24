@@ -68,7 +68,7 @@ const About = () => {
       const timeout = setTimeout(() => {
         sectionRef.current.scrollIntoView({ behavior: 'smooth' });
         // localStorage.setItem('masonryScroll', 'true');
-      }, 1000); // Delay to let the heading finish animation
+      }, 800); 
 
       return () => clearTimeout(timeout);
     }
@@ -139,7 +139,7 @@ const About = () => {
       </section>
 
       {/* Footer */}
-      <Footer />
+      <Footer darkMode = {true} />
     </>
   );
 };

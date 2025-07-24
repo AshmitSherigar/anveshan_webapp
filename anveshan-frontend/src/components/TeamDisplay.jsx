@@ -54,10 +54,10 @@ const TeamDisplay = () => {
         }
       });
 
-    // Image hover behavior (only on wide screens)
+    // Image hover 
     if (window.innerWidth >= 900) {
       profileImages.forEach((img, index) => {
-        const correspondingName = nameElements[index + 1]; // skip default
+        const correspondingName = nameElements[index + 1]; 
         const letters = correspondingName.querySelectorAll(".letter");
 
         img.addEventListener("mouseenter", () => {
@@ -81,15 +81,15 @@ const TeamDisplay = () => {
             duration: 1,
             stagger: {
               each: 0.03,
-              from: "center"
+              from: "left"
             }
           });
 
           gsap.to(img, {
-            width: 140,
-            height: 140,
+            width: 180,
+            height: 180,
             ease: "power3.out",
-            duration: 0.5
+            duration: 0.3
           });
         });
 
@@ -111,10 +111,10 @@ const TeamDisplay = () => {
             width: 100,
             height: 100,
             ease: "power3.out",
-            duration: 0.5
+            duration: 0.4
           });
 
-          
+
           setTimeout(() => {
             if (!hoverStates.includes(true)) {
               gsap.killTweensOf(defaultLetters);
@@ -128,7 +128,7 @@ const TeamDisplay = () => {
                 }
               });
             }
-          }, 100); 
+          }, 100);
         });
       });
     }
@@ -136,9 +136,19 @@ const TeamDisplay = () => {
 
 
   return (
-    <section className='border-t-2 relative w-[100vw] h-[100svh] flex flex-col justify-center items-center gap-[2.5rem] overflow-x-hidden'>
+    <section className='border-t-2 relative w-[100vw] h-[100svh] flex flex-col justify-center items-center gap-[3rem] overflow-x-hidden'>
       {/* Profile Images */}
-      <div className="profile-images w-max flex justify-center items-center gap-4 flex-wrap">
+
+
+      {/* Heading Of the Page */}
+      {/* absolute top-[30%] left-[50%] -translate-x-1/2 -translate-y-1/2   add this instead of relative below for better visual */}
+      <div className="heading-name w-full h-[12rem] overflow-hidden relative"> 
+            <h1 className='absolute w-full text-center uppercase text-[5rem] font-extrabold select-none tracking-tighter text-black'>
+              Meet the
+            </h1>
+      </div>
+
+      <div className="profile-images w-max flex justify-center items-center gap-6 flex-wrap">
         {Array.from({ length: 9 }).map((_, i) => (
           <img
             className="img object-cover relative rounded-xl transition-all"
