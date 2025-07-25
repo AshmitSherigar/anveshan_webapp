@@ -12,18 +12,19 @@ import Resources from './Resources';
 import Navigation from './Navigation';
 import logo from "../assets/images/logo.jpeg"
 import logo2 from "../assets/images/logo-removebg-preview.png"
+import EventsTabs from "./EventsTabs";
 
 
 gsap.registerPlugin(ScrollTrigger);
 
 
 {/* 
-
+  
   <svg width="1013" height="1761" viewBox="0 0 1013 1761" fill="none" xmlns="http://www.w3.org/2000/svg">
   <path d="M7 15C296.087 145.682 29.794 500.036 97.5 666.5C165.206 832.964 475.531 728.863 561.5 635C647.469 541.137 538.42 260.453 374.5 345.5C210.58 430.547 337.974 689.002 374.5 828.5C411.026 967.998 76.3372 893.307 202.1 1233.66C327.863 1574.02 1149.21 1175.58 779.5 1006C409.79 836.424 433.598 1921.92 1007 1719.06" stroke="#224B6B" stroke-width="32"/>
   </svg>
-   
-*/}
+  
+  */}
 
 const Home = () => {
 
@@ -51,6 +52,88 @@ const Home = () => {
     month: 'long',
     day: 'numeric',
   });
+  const events = [
+    // ✅ UPCOMING EVENT
+    {
+      id: "upcoming-hackathon-2025",
+      title: "Hackathon: Build for AI/ML – 24-Hour Challenge",
+      description:
+        "Join us on August 20 for an intense 24-hour AI/ML hackathon. Showcase your skills, collaborate with peers, and bring your ideas to life!",
+      date: "2025-08-20T09:00:00+05:30", // IST time
+      image:"https://unsplash.com/photos/black-flat-screen-tv-turned-on-displaying-man-in-black-suit-dJICd7b_LlE",
+      registrationLink: "https://example.com/register-ai-hackathon",
+      location: "NIE Innovation Lab",
+      highlights: [
+        "24-hour hackathon on AI/ML project ideas",
+        "Exciting problem statements",
+        "Mentorship from industry experts",
+        "Prizes and certificates for winners",
+      ]
+    },
+
+    // ✅ PREVIOUS EVENTS
+    {
+      id: "hackathon-2025-feb",
+      title: "Hackathon: Innovate Next! 48-Hour Hackathon",
+      description:
+        "ANVESHAN’s first-ever 48-Hour Hackathon! Showcase your coding skills and come up with innovative solutions in AI, ML, and tech innovation.",
+      date: "2025-02-25T09:00:00+05:30",
+      image:"https://unsplash.com/photos/black-flat-screen-tv-turned-on-displaying-man-in-black-suit-dJICd7b_LlE",
+      location: "NIE Innovation Lab",
+      highlights: [
+        "AI and ML-based problem statements",
+        "Mentorship from industry experts",
+        "Exciting prizes for top teams",
+        "Live coding and rapid prototyping",
+        "Closing ceremony with awards"
+      ]
+    },
+    {
+      id: "workshop-2025-jan",
+      title: "Workshop: AI in the Real World with an Ex-NVIDIA Expert",
+      description:
+        "Hands-on workshop on practical AI applications, led by an Ex-NVIDIA AI Expert. Engage in real-world projects under expert guidance.",
+      date: "2025-01-15T10:00:00+05:30",
+      image:"https://unsplash.com/photos/black-flat-screen-tv-turned-on-displaying-man-in-black-suit-dJICd7b_LlE",
+      location: "NIE Computer Science Lab",
+      highlights: [
+        "Introduction to advanced AI techniques",
+        "Hands-on sessions with NVIDIA hardware",
+        "Networking with industry professionals"
+      ]
+    },
+    {
+      id: "conference-2024-dec",
+      title: "Conference / Symposium: Paper Presentation on AI and ML Innovations",
+      description:
+        "Symposium featuring paper presentations on cutting-edge research and emerging trends in AI and ML.",
+      date: "2024-12-10T09:00:00+05:30",
+      image:"https://unsplash.com/photos/black-flat-screen-tv-turned-on-displaying-man-in-black-suit-dJICd7b_LlE",
+      location: "NIE Conference Hall, Mysuru",
+      highlights: [
+        "Paper presentations on AI/ML advancements",
+        "Interactive Q&A sessions",
+        "Panel discussions with industry experts",
+        "Best paper awards"
+      ]
+    },
+    {
+      id: "anveshan-opening-2024-oct",
+      title: "Opening Ceremony of ANVESHAN",
+      description:
+        "Official launch of ANVESHAN at NIE. Featuring keynote speakers, upcoming club activities, and project showcases.",
+      date: "2024-10-20T10:00:00+05:30",
+      image:"https://unsplash.com/photos/black-flat-screen-tv-turned-on-displaying-man-in-black-suit-dJICd7b_LlE",
+      location: "NIE Auditorium, Mysuru",
+      highlights: [
+        "Keynote address by industry experts",
+        "Introduction to ANVESHAN’s mission",
+        "Showcase of ongoing projects",
+        "Networking session"
+      ]
+    }
+  ];
+
 
   const scrollToAbout = () => {
     document.getElementById('about-section')?.scrollIntoView({ behavior: 'smooth' });
@@ -290,7 +373,10 @@ const Home = () => {
       </section>
 
 
-      <section className='h-[100vh] w-full bg-amber-500'></section>
+
+      
+      <EventsTabs events={events} />
+
       <CurvedLoop
         marqueeText="Projects ✦ Researches ✦"
         speed={2}

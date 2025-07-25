@@ -837,6 +837,18 @@ export default function InfiniteMenu({ items = [] }) {
     const canvasRef = useRef(null);
     const [activeItem, setActiveItem] = useState(null);
     const [isMoving, setIsMoving] = useState(false);
+    // 1. Track mouse position
+    const [cursor, setCursor] = useState({ x: 0, y: 0 });
+
+    useEffect(() => {
+        const handleMouseMove = (e) => {
+            setCursor({ x: e.clientX, y: e.clientY });
+        };
+
+        window.addEventListener('mousemove', handleMouseMove);
+        return () => window.removeEventListener('mousemove', handleMouseMove);
+    }, []);
+
 
     useEffect(() => {
         const canvas = canvasRef.current;
@@ -882,6 +894,18 @@ export default function InfiniteMenu({ items = [] }) {
 
     return (
         <div className="relative w-full h-full">
+
+            <div
+                className="z-1000 absolute pointer-events-none uppercase text-white text-sm bg-gray-700 px-1 py-1 rounded-md shadow-lg transition-opacity duration-200"
+                style={{
+                    left: cursor.x,
+                    top: cursor.y,
+                }}
+            >
+                Drag these circles
+            </div>
+
+
             <canvas
                 id="infinite-grid-menu-canvas"
                 ref={canvasRef}
