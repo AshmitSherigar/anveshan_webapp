@@ -7,11 +7,11 @@ import {
 } from "react";
 
 const CurvedLoop = ({
-  marqueeText = "",
-  speed = 2,
+  marqueeText = "Project ✦ Researches ✦ Project ✦ Researches ✦ Project ✦ Researches ✦ Project ✦ Researches ✦",
+  speed = 3,
   className,
-  curveAmount = 400,
-  direction = "left",
+  curveAmount = 300,
+  direction = "right",
   interactive = true,
 }) => {
   const text = useMemo(() => {
