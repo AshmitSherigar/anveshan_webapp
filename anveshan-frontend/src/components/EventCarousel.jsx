@@ -46,9 +46,9 @@ const EventCarousel = ({ events, isUpcoming }) => {
                     <img
                         src={event.image}
                         alt={event.title}
-                        className="w-full h-40 object-cover"
+                        className="w-full h-45 object-cover"
                     />
-                    <div className="p-4 space-y-2">
+                    <div className="p-5 space-y-2">
                         <h3 className="text-lg font-bold">{event.title}</h3>
                         <p className="text-sm text-gray-500">
                             {new Date(event.date).toLocaleString("en-IN", {

@@ -123,9 +123,9 @@ const Home = () => {
       title: "Hackathon: Build for AI/ML – 24-Hour Challenge",
       description:
         "Join us on August 20 for an intense 24-hour AI/ML hackathon. Showcase your skills, collaborate with peers, and bring your ideas to life!",
-      date: "2025-08-20T09:00:00+05:30", // IST time
+      date: "2025-08-20T09:00:00+05:30", 
       image: "https://unsplash.com/photos/black-flat-screen-tv-turned-on-displaying-man-in-black-suit-dJICd7b_LlE",
-      registrationLink: "https://example.com/register-ai-hackathon",
+      registrationLink: "https://example.com/register-ai-hackathon", // Provide the fresh registration link
       location: "NIE Innovation Lab",
       highlights: [
         "24-hour hackathon on AI/ML project ideas",
@@ -181,21 +181,7 @@ const Home = () => {
         "Best paper awards"
       ]
     },
-    {
-      id: "conference-2025-dec",
-      title: "Conference / Symposium: Paper Presentation on AI and ML Innovations",
-      description:
-        "Symposium featuring paper presentations on cutting-edge research and emerging trends in AI and ML.",
-      date: "2024-12-10T09:00:00+05:30",
-      image: "https://unsplash.com/photos/black-flat-screen-tv-turned-on-displaying-man-in-black-suit-dJICd7b_LlE",
-      location: "NIE Conference Hall, Mysuru",
-      highlights: [
-        "Paper presentations on AI/ML advancements",
-        "Interactive Q&A sessions",
-        "Panel discussions with industry experts",
-        "Best paper awards"
-      ]
-    },
+
     {
       id: "anveshan-opening-2024-oct",
       title: "Opening Ceremony of ANVESHAN",

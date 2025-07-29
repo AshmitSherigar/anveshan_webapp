@@ -4,7 +4,7 @@ import DotGrid from './DotGrid';
 import Footer from './Footer';
 import Masonry from './Masonry';
 import imageReq from '../assets/images/110-600x860-grayscale.jpg';
-
+import Logo from "../assets/images/logo-removebg-preview.png"
 const About = () => {
   const sectionRef = useRef(null); // Hero section
   const animatedHeadingRef = useRef(null);
@@ -62,13 +62,13 @@ const About = () => {
   }, []);
 
   useEffect(() => {
-    
+
 
     if (showMasonry) {
       const timeout = setTimeout(() => {
         sectionRef.current.scrollIntoView({ behavior: 'smooth' });
         // localStorage.setItem('masonryScroll', 'true');
-      }, 800); 
+      }, 800);
 
       return () => clearTimeout(timeout);
     }
@@ -107,15 +107,16 @@ const About = () => {
             Join Us
           </button>
 
-          <p className="text-sm text-gray-400 max-w-xl mt-1">
+          <p className="text-sm text-gray-300 max-w-xl mt-1">
             “The future belongs to those who learn more skills and combine them in creative ways.” – Robert Greene
           </p>
         </div>
+
       </section>
 
       {/* Masonry Section */}
       <section
-        
+
         className="relative bg-black py-32 px-4 md:px-24 min-h-[100vh] overflow-hidden"
       >
         <h2
@@ -139,7 +140,7 @@ const About = () => {
       </section>
 
       {/* Footer */}
-      <Footer darkMode = {true} />
+      <Footer darkMode={true} />
     </>
   );
 };
